@@ -8,8 +8,17 @@ function IndexDeezer(){
 
     useEffect(() => {
         const token = localStorage.getItem('deezerAccessToken');
-        if (token) {
-          setIsLoggedIn(true);
+        const expiresAt = localStorage.getItem('deezerTokenExpiresAt');
+
+        if (token && expiresAt) {
+            const currentTime = Date.now();
+            if (currentTime < parseInt(expiresAt)) {
+              setIsLoggedIn(true);
+            } else {
+              // Token expiré, on clear le token stocké 
+              localStorage.removeItem('deezerAccessToken');
+              localStorage.removeItem('deezerTokenExpiresAt');
+            }
         }
     }, []);
 
