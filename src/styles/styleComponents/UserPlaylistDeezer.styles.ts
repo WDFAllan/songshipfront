@@ -24,7 +24,7 @@ export const PlaylistCard = styled.div`
 
 export const PlaylistTitle = styled.div`
   padding: 10px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: bold;
   text-align: center;
 `;
