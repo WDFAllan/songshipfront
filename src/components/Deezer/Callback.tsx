@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import exp from 'constants';
 
 function Callback() {
     const location = useLocation();
@@ -18,15 +19,20 @@ function Callback() {
   
           try {
             const response = await axios.get(tokenUrl);
-            const { access_token,expires } = response.data;
-            console.log(response)
-            if (access_token) {
-              // Enregistrer le token (par exemple, dans le local storage)
-              localStorage.setItem('deezerAccessToken', access_token);
-              const expiresAt = Date.now() + expires * 1000; // convert seconds to milliseconds
-              localStorage.setItem('deezerTokenExpiresAt', expiresAt.toString());
+            const { access_token, expires} = response.data;
+            if (access_token && expires !== undefined ) {
 
-              // Rediriger l'utilisateur
+              // save token in localstorage
+              localStorage.setItem('deezerAccessToken', access_token);
+
+              if(expires>0){
+                const expiresAt = Date.now() + expires * 1000; // convert seconds to milliseconds
+                localStorage.setItem('deezerTokenExpiresAt', expiresAt.toString());
+              }else{
+                localStorage.removeItem('deezerTokenExpiresAt')
+              }
+              
+              // Redirect the user
               navigate('/');
             }
           } catch (error) {

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../../styles/css/UserInfo.css'
 
-const UserProfile: React.FC = () => {
+function Userinfo() {
     const [user, setUser] = useState<any>(null);
 
     useEffect(() => {
@@ -26,11 +27,10 @@ const UserProfile: React.FC = () => {
     if (!user) return <div>Loading...</div>;
 
     return (
-        <div>
-        <h1>Welcome, {user.name}</h1>
-        <p>Email: {user.email}</p>
+        <div className='profile'>
+            Deezer account, {user.name}
         </div>
     );
 };
 
-export default UserProfile;
+export default Userinfo;
