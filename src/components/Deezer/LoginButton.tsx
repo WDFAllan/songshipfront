@@ -9,7 +9,7 @@ function LoginButton(){
     }
 
     return  <button className="button-9" role="button" onClick={handleLogin}>
-                Login
+                Login to Deezer
             </button>
 }
 

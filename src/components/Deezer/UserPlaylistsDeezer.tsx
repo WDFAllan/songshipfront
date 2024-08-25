@@ -137,8 +137,8 @@ function UserPlaylistDeezer(){
     }
 
 
-
-    if(loading) return <div>Loading playlist....</div>
+    
+    if(loading) return <div></div>
     if (error) return <div>Error: {error}</div>;
 
     return (
