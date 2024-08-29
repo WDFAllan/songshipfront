@@ -9,7 +9,7 @@ function Mainpage(){
     return(
         <div className="Main">
             <header>
-                <img src={SongShip}/>
+                <img className="titleImg" src={SongShip}/>
             </header>
             <div className="splits">
                 <IndexDeezer/>

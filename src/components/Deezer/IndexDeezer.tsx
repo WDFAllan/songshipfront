@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import LoginButton from "./LoginButton";
 import Userinfo from "./UserInfo";
-import '../../styles/css/Index.css'
+import '../../styles/css/IndexDeezer.css'
 import UserPlaylistDeezer from "./UserPlaylistsDeezer";
 import DeezerLogo from "../../images/DeezerLogo.png";
 

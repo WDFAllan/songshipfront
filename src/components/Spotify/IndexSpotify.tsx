@@ -1,6 +1,6 @@
 import SpotifyLogo from "../../images/SpotifyLogo.png";
 import LoginButtonSpotify from "./LoginButtonSpotify";
-import '../../styles/css/Index.css'
+import '../../styles/css/IndexSpotify.css'
 
 function IndexSpotify(){
 
