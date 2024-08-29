@@ -1,0 +1,16 @@
+img{
+    height: 100%;
+}
+header{
+    height: 6%;
+    width: 100%;
+    position: fixed;
+    font-size: 14px;
+    text-align: center;
+    background-color: rgb(128, 128, 128);
+    padding: 1%;
+    z-index: 2;
+}
+h1{
+    margin:0;
+}

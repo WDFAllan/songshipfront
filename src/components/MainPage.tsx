@@ -1,15 +1,18 @@
 import IndexDeezer from "./Deezer/IndexDeezer";
 import IndexSpotify from "./Spotify/IndexSpotify";
+import '../styles/css/MainPage.css'
+import SongShip from "../images/SongShip.png";
 
 function Mainpage(){
 
 
     return(
         <div className="Main">
-            <div className="split Deezer">
+            <header>
+                <img src={SongShip}/>
+            </header>
+            <div className="splits">
                 <IndexDeezer/>
-            </div>
-            <div className="split Spotify">
                 <IndexSpotify/>
             </div>
         </div>
