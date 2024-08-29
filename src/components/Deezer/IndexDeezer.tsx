@@ -3,6 +3,7 @@ import LoginButton from "./LoginButton";
 import Userinfo from "./UserInfo";
 import '../../styles/css/IndexDeezer.css'
 import UserPlaylistDeezer from "./UserPlaylistsDeezer";
+import DeezerLogo from "../../images/DeezerLogo.png";
 
 function IndexDeezer(){
 
@@ -12,7 +13,7 @@ function IndexDeezer(){
         const token = localStorage.getItem('deezerAccessToken');
         const expiresAt = localStorage.getItem('deezerTokenExpiresAt');
 
-        if (token ) {
+        if (token) {
             if(expiresAt){
                 const currentTime = Date.now();
 
@@ -28,15 +29,23 @@ function IndexDeezer(){
         }
     }, []);
 
-    return( 
-        <div>
-            <div className="loginInfo">
-                {isLoggedIn ? <Userinfo /> : <LoginButton />}
-            </div>
-            <div className="DeezerPlaylist">
-                <UserPlaylistDeezer/>
-            </div>
-        </div>
+    return(
+            <div className="split Deezer">
+                
+                {isLoggedIn ?
+                    <div className="userInfo">
+                        <Userinfo /> 
+                    </div>
+                : 
+                    <div className="deezerLoginButton">
+                        <img className="deezerLogo" src={DeezerLogo}/>
+                        <LoginButton />
+                    </div>
+                }
+                <div className="DeezerPlaylist">
+                    <UserPlaylistDeezer/>
+                </div>
+            </div>  
     )
 
 }

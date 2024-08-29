@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IndexDeezer from '../components/Deezer/IndexDeezer';
+import MainPage from '../components/MainPage';
 import Callback from '../components/Deezer/Callback';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -11,7 +11,7 @@ export default function DefineRoutes() {
     return (
       <Router>
         <Routes>
-            <Route path="/" element={<IndexDeezer/>}></Route>
+            <Route path="/" element={<MainPage/>}></Route>
             <Route path="/callback" element={<Callback />} />
         </Routes>
       </Router>

@@ -8,7 +8,7 @@ function LoginButton(){
         window.location.href = url;
     }
 
-    return  <button className="button-9" role="button" onClick={handleLogin}>
+    return  <button className="button-9 deezerButton" role="button" onClick={handleLogin}>
                 Login to Deezer
             </button>
 }
