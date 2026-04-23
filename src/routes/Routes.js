@@ -1,10 +1,11 @@
 import React from 'react';
 
 import MainPage from '../components/MainPage';
-import Callback from '../components/Deezer/Callback';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginButton from '../components/Deezer/LoginButton';
+import CallbackDeezer from '../components/Deezer/CallbackDeezer';
+import CallbackSpotify from '../components/Spotify/CallbackSpotify';
+
 
 
 export default function DefineRoutes() {
@@ -12,7 +13,8 @@ export default function DefineRoutes() {
       <Router>
         <Routes>
             <Route path="/" element={<MainPage/>}></Route>
-            <Route path="/callback" element={<Callback />} />
+            <Route path="/callbackDeezer" element={<CallbackDeezer />} />
+            <Route path="/callbackSpotify" element={<CallbackSpotify/>} />
         </Routes>
       </Router>
     );

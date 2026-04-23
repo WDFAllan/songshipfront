@@ -5,7 +5,8 @@
     z-index: 1;
     top: 0;
     overflow-x: hidden;
-    padding-top: 7%;
+    overflow-y: auto;
+    padding-top: 80px;
 }
 
 .Deezer{

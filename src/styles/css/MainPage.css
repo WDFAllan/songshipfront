@@ -1,17 +1,361 @@
-.titleImg{
-    height: 100%;
+/* ── Base ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+/* ── App ── */
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #111;
+    color: #fff;
 }
-header{
-    height: 6%;
+
+/* ── Header ── */
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(17, 17, 17, 0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    gap: 24px;
+}
+
+.app-logo {
+    height: 28px;
+    filter: saturate(0%) brightness(10);
+    flex-shrink: 0;
+}
+
+.header-service {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.header-service--right {
+    justify-content: flex-end;
+}
+
+.service-logo {
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.spotify-logo {
+    filter: brightness(0) invert(1);
+}
+
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 4px 10px 4px 12px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.badge-name {
+    font-size: 13px;
+    color: #bbb;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.15s;
+    flex-shrink: 0;
+}
+
+.logout-btn:hover {
+    color: #fff;
+}
+
+/* ── Main ── */
+.app-main {
+    flex: 1;
+    max-width: 860px;
     width: 100%;
-    position: fixed;
-    font-size: 14px;
-    text-align: center;
-    background-color: rgb(128, 128, 128);
-    padding: 1%;
-    z-index: 2;
+    margin: 0 auto;
+    padding: 48px 24px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
 }
-h1{
-    margin:0;
+
+/* ── Direction bar ── */
+.direction-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.direction-end {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.direction-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #555;
+}
+
+.direction-pill {
+    padding: 9px 28px;
+    border-radius: 24px;
+    border: 2px solid;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+    min-width: 110px;
+    text-align: center;
+}
+
+.direction-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding-top: 22px;
+}
+
+.direction-arrow {
+    font-size: 22px;
+    color: #444;
+    line-height: 1;
+}
+
+.swap-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.swap-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: rotate(180deg);
+}
+
+/* ── Section ── */
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.muted {
+    color: #555;
+    font-size: 14px;
+}
+
+.not-connected {
+    text-align: center;
+    color: #555;
+    font-size: 15px;
+    padding: 40px 0;
+}
+
+/* ── Playlists ── */
+.playlist-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.playlist-card {
+    width: 130px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.playlist-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+}
+
+.playlist-card.selected {
+    border-color: var(--accent);
+}
+
+.playlist-img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+}
+
+.playlist-name {
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ccc;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Tracks ── */
+.tracks-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tracks-header .section-title {
+    margin-bottom: 0;
+}
+
+.tracks-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.transfer-btn {
+    padding: 10px 24px;
+    border-radius: 20px;
+    border: none;
+    background: var(--accent);
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    white-space: nowrap;
+}
+
+.transfer-btn:hover:not(:disabled) {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+.transfer-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.transfer-status {
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.not-found {
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #666;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.not-found summary {
+    cursor: pointer;
+    margin-bottom: 6px;
+}
+
+.not-found ul {
+    padding-left: 16px;
+    color: #555;
+    margin-top: 6px;
+}
+
+.not-found li {
+    margin-bottom: 3px;
+}
+
+/* ── Track list ── */
+.track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.track-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: background 0.12s;
+}
+
+.track-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.track-img {
+    width: 46px;
+    height: 46px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.track-info {
+    min-width: 0;
+}
+
+.track-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-artist {
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
 }

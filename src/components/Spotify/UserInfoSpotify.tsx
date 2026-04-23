@@ -2,25 +2,23 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../styles/css/UserInfo.css'
 
-function Userinfo() {
+function UserInfoSpotify() {
     const [user, setUser] = useState<any>(null);
 
     useEffect(() => {
         const fetchUserProfile = async () => {
-            const accessToken = localStorage.getItem('deezerAccessToken');
-
+            const accessToken = localStorage.getItem('spotifyAccessToken');
             if (accessToken) {
                 try {
-                    const response = await axios.get('/deezer-api/user/me', {
-                        params: { access_token: accessToken },
+                    const response = await axios.get('/spotify-api/v1/me', {
+                        headers: { Authorization: `Bearer ${accessToken}` },
                     });
                     setUser(response.data);
                 } catch (error) {
-                    console.error('Error fetching user profile:', error);
+                    console.error('Error fetching Spotify user profile:', error);
                 }
             }
         };
-
         fetchUserProfile();
     }, []);
 
@@ -28,9 +26,9 @@ function Userinfo() {
 
     return (
         <div className='profile'>
-            Deezer account, {user.name}
+            Spotify account, {user.display_name}
         </div>
     );
-};
+}
 
-export default Userinfo;
+export default UserInfoSpotify;
