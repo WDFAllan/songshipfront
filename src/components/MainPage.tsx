@@ -5,6 +5,7 @@ import DeezerLogo from '../images/DeezerLogo.png';
 import SpotifyLogo from '../images/SpotifyLogo.png';
 import LoginButtonDeezer from './Deezer/LoginButtonDeezer';
 import LoginButtonSpotify from './Spotify/LoginButtonSpotify';
+import WaveBackground from './WaveBackground';
 import '../styles/css/MainPage.css';
 import '../styles/css/LoginButton.css';
 
@@ -325,6 +326,7 @@ function MainPage() {
 
     return (
         <div className="app">
+            <WaveBackground />
             {/* ── HEADER ── */}
             <header className="app-header">
                 <div className="header-service">
@@ -458,8 +460,9 @@ function MainPage() {
                             ? <p className="muted">Chargement des pistes...</p>
                             : (
                                 <div className="track-list">
-                                    {tracks.map(t => (
+                                    {tracks.map((t, i) => (
                                         <div key={t.id} className="track-card">
+                                            <span className="track-number">{i + 1}</span>
                                             <img src={t.image} alt={t.title} className="track-img" />
                                             <div className="track-info">
                                                 <p className="track-title">{t.title}</p>
