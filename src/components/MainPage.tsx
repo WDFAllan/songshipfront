@@ -135,7 +135,20 @@ function MainPage() {
                         id: p.id, title: p.name, image: p.images?.[0]?.url,
                     })));
                 }
-            } catch (err) { console.error('[fetchPlaylists]', err); }
+            } catch (err) {
+                if (axios.isAxiosError(err) && err.response?.status === 403) {
+                    if (source === 'deezer') {
+                        localStorage.removeItem('deezerAccessToken');
+                        localStorage.removeItem('deezerTokenExpiresAt');
+                        setDeezerLoggedIn(false);
+                    } else {
+                        localStorage.removeItem('spotifyAccessToken');
+                        localStorage.removeItem('spotifyRefreshToken');
+                        localStorage.removeItem('spotifyTokenExpiresAt');
+                        setSpotifyLoggedIn(false);
+                    }
+                }
+            }
             finally { setPlaylistsLoading(false); }
         };
         run();
@@ -325,7 +338,6 @@ function MainPage() {
                     }
                 </div>
 
-                <img src={SongShipLogo} alt="SongShip" className="app-logo" />
 
                 <div className="header-service header-service--right">
                     {spotifyLoggedIn
